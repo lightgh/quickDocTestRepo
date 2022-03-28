@@ -1,5 +1,7 @@
 FROM node:16
 
+LABEL maintainer="chinakalight@googlemail.com"
+
 # Create app directory
 WORKDIR /usr/src/app
 
