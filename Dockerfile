@@ -1,8 +1,16 @@
-FROM alpine
-LABEL maintainer="chinakalight@googlemail.com"
-RUN apk add --update nodejs npm
-COPY . /src
-WORKDIR /src
+FROM node:16
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# transfer files to directory
+COPY package*.json ./
+
 RUN npm install
+# RUN if production
+#RUN nom ci --only=production
+
+COPY . .
+
 EXPOSE 8080
-ENTRYPOINT [ "node", "./main.js" ]
+CMD ["node", "app.js"]
